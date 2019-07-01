@@ -16,14 +16,7 @@ Plug 'ervandew/supertab'
 Plug 'ajh17/VimCompletesMe'
 Plug 'w0rp/ale'
 Plug 'flowtype/vim-flow'
-NeoBundleLazy 'flowtype/vim-flow', {
-            \ 'autoload': {
-            \     'filetypes': 'javascript'
-            \ },
-            \ 'build': {
-            \     'mac': 'npm install -g flow-bin',
-            \     'unix': 'npm install -g flow-bin'
-            \ }}
+Plug 'kien/rainbow_parentheses.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
@@ -48,52 +41,38 @@ Plug 'othree/html5.vim'
 Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
-
 Plug 'joonty/vdebug', { 'on': 'VdebugStart' }
 Plug 'rhysd/vim-clang-format', { 'for': ['c', 'cpp'] }
 Plug 'tpope/vim-ragtag'
 Plug 'Quramy/tsuquyomi'
 Plug 'mhartington/vim-typings'
-
 Plug 'Shougo/unite.vim'
-
 Plug 'eagletmt/ghcmod-vim'
 Plug 'eagletmt/ghcmod-vim'
 Plug 'neovimhaskell/haskell-vim'
-
 Plug 'elzr/vim-json'
 Plug 'vim-scripts/JavaScript-Indent'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
-" Plug 'mitermayer/vim-prettier', {
-"       \ 'do': 'npm install',
-"       \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss'] }
 Plug 'prettier/vim-prettier', {
-        \ 'do': 'yarn install',
+        \ 'do': 'npm install',
         \ 'for': ['javascript', 'typescript', 'css', 'html', 'json'],
-        \ 'branch': 'release/1.x'
         \ }
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'chemzqm/vim-jsx-improve', { 'for': 'javascript' }
 Plug 'moll/vim-node'
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'reedes/vim-lexical'
-
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'shime/vim-livedown', { 'for': 'markdown' }
 Plug 'tpope/vim-haml', { 'for': 'haml' }
 Plug 'michaeljsmith/vim-indent-object'
-
 Plug 'vim-scripts/paredit.vim', { 'for': ['clojure', 'scheme', 'racket'] }
 Plug 'wlangstroth/vim-racket', { 'for': 'racket' }
-
 Plug 'stephpy/vim-yaml', { 'for': 'yaml' }
-
 Plug 'chrisbra/csv.vim', { 'for': 'csv' }
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
-
-
 
 call plug#end()
 
@@ -132,7 +111,8 @@ set hidden
 set nofoldenable
 set wrap
 set linebreak
-set relativenumber
+set number relativenumber
+set nu rnu
 set hlsearch
 set ignorecase
 set smartcase
@@ -218,9 +198,9 @@ map <leader>cr :GrammarousCheck --lang=ru --preview<CR>
 
 """ Plugin Settings
 
-let g:prettier#config#single_quote = 'true'
-let g:prettier#config#trailing_comma = 'none'
-let g:prettier#config#config_precedence = 'file-override'
+" let g:prettier#config#single_quote = 'true'
+" let g:prettier#config#trailing_comma = 'none'
+" let g:prettier#config#config_precedence = 'file-override'
 
 let g:LanguageClient_autoStart = 1
 set shell=/bin/bash
@@ -250,13 +230,41 @@ let g:ale_fixers = {
       \ }
 
 let g:ale_javascript_tsserver_use_global = 1
-let g:ale_javascript_eslint_use_global = 1
+" let g:ale_javascript_eslint_use_global = 1
 
 let test#strategy = "neovim"
 
 let g:vim_markdown_folding_disabled = 1
 
 let g:SuperTabDefaultCompletionType    = '<C-n>'
+
+"---BEGIN Rainbow parentheses---
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+"---END Rainbow parentheses---
 
 nmap <F8> :TagbarToggle<CR>
 
