@@ -270,6 +270,7 @@ nmap <F8> :TagbarToggle<CR>
 
 nnoremap ff :normal! gg=G``<CR>
 
+noremap <Leader>y "+y
 
 " set text wrapping toggles
 nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
