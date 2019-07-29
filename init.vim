@@ -343,4 +343,6 @@ function! WinMove(key)
   endif
 endfunction
 
+au VimEnter * NERDTree
+
 autocmd BufReadPost * call vimlambdify#lambdify("Statement", "scmNiceLambda", "lambda")
