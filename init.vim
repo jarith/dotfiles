@@ -6,11 +6,9 @@ setglobal pastetoggle=<F2>
 set ttyfast
 set lazyredraw
 
-let g:python_host_skip_check=1
-let g:loaded_python3_provider=1
-
 call plug#begin('~/.vim/plugged')
 
+Plug 'calebsmith/vim-lambdify'
 Plug 'tpope/vim-sensible'
 Plug 'ervandew/supertab'
 Plug 'ajh17/VimCompletesMe'
@@ -38,7 +36,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-projectionist'
 Plug 'othree/html5.vim'
-Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'joonty/vdebug', { 'on': 'VdebugStart' }
@@ -91,14 +88,6 @@ set completeopt=noinsert,menuone,noselect
 if has('mouse')
   set mouse=a
 endif
-
-" if has("clipboard")
-"   set clipboard=unnamed " copy to the system clipboard
-
-"   if has("unnamedplus") " X11 support
-"     set clipboard+=unnamedplus
-"   endif
-" endif
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -176,6 +165,9 @@ nmap <silent> <leader>l :Prettier<CR>
 nmap <silent> <leader>s :w!<CR>
 nmap <silent> <leader>q :q!<CR>
 
+nmap <silent> <C-e>r :!racket %:t<CR>
+nmap <silent> <C-t>r :!raco test '%:t<CR>
+
 " Auto indent pasted text
 " nnoremap p p=`]<C-o>
 " nnoremap P P=`]<C-o>
@@ -208,9 +200,6 @@ set shell=/bin/bash
 let g:LanguageClient_serverCommands = {
        \ 'javascript': ['javascript-typescript-stdio'],
        \ 'javascript.jsx': ['javascript-typescript-stdio'],
-       \ 'java': ['/usr/local/bin/jdtls'],
-       \ 'ruby': ['solargraph', 'stdio'],
-       \ 'python': ['pyls'],
        \ }
 
 let g:vim_markdown_frontmatter = 1
@@ -236,7 +225,7 @@ let test#strategy = "neovim"
 
 let g:vim_markdown_folding_disabled = 1
 
-let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "---BEGIN Rainbow parentheses---
 let g:rbpt_colorpairs = [
@@ -266,14 +255,9 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 "---END Rainbow parentheses---
 
-nmap <F8> :TagbarToggle<CR>
-
 nnoremap ff :normal! gg=G``<CR>
 
 noremap <Leader>y "+y
-
-" set text wrapping toggles
-nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
 
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
@@ -326,8 +310,6 @@ augroup FileTypeTetect
   autocmd!
   au BufEnter *.markdown,*.mkd,*.md setl wrap tw=79
   au BufEnter *.json setl ft=javascript
-  " au BufEnter *.coffee setl sw=2 expandtab
-  " au BufEnter *.py setl ts=4 sw=4 sts=4
   autocmd BufEnter *.php setlocal ts=4 sw=4 sts=4
   autocmd BufEnter *.java setlocal ts=4 sw=4 sts=4
   autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
@@ -338,7 +320,7 @@ augroup FileTypeTetect
   " au BufEnter *.tex setl wrap tw=79 fo=tcqor
   " au BufEnter *.[ch] setl cindent
   " au BufEnter *.[ch]pp setl cindent
-  " au BufEnter Makefile setl ts=4 sts=4 sw=4 noet list
+  au BufEnter Makefile setl ts=4 sts=4 sw=4 noet list
   " au BufEnter *.es6 setf javascript
 augroup END
 
@@ -347,6 +329,7 @@ map <silent> <C-h> :call WinMove('h')<CR>
 map <silent> <C-j> :call WinMove('j')<CR>
 map <silent> <C-k> :call WinMove('k')<CR>
 map <silent> <C-l> :call WinMove('l')<CR>
+
 function! WinMove(key)
   let t:curwin = winnr()
   exec "wincmd ".a:key
@@ -359,3 +342,5 @@ function! WinMove(key)
    exec "wincmd ".a:key
   endif
 endfunction
+
+autocmd BufReadPost * call vimlambdify#lambdify("Statement", "scmNiceLambda", "lambda")
