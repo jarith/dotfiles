@@ -159,14 +159,8 @@ nmap <silent> <leader>tn :TestNearest<CR>
 " nmap <silent> t<C-l> :TestLast<CR>
 " nmap <silent> t<C-g> :TestVisit<CR>
 
-nmap <silent> <leader>t :!npm run test<CR>
-nmap <silent> <F5> :!npm start<CR>
-nmap <silent> <leader>l :Prettier<CR>
 nmap <silent> <leader>s :w!<CR>
 nmap <silent> <leader>q :q!<CR>
-
-nmap <silent> <C-e>r :!racket %:t<CR>
-nmap <silent> <C-t>r :!raco test '%:t<CR>
 
 " Auto indent pasted text
 " nnoremap p p=`]<C-o>
@@ -190,12 +184,12 @@ map <leader>cr :GrammarousCheck --lang=ru --preview<CR>
 
 """ Plugin Settings
 
-" let g:prettier#config#single_quote = 'true'
-" let g:prettier#config#trailing_comma = 'none'
-" let g:prettier#config#config_precedence = 'file-override'
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#trailing_comma = 'none'
+let g:prettier#config#config_precedence = 'file-override'
 
 let g:LanguageClient_autoStart = 1
-set shell=/bin/bash
+set shell=/bin/zsh
 
 let g:LanguageClient_serverCommands = {
        \ 'javascript': ['javascript-typescript-stdio'],
@@ -206,20 +200,25 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toc_autofit = 1
 let g:lexical#spelllang = ['en_us', 'ru_ru']
 let g:airline#extensions#ale#enabled = 1
+
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
       \   '*': ['remove_trailing_lines', 'trim_whitespace'],
       \   'javascript': ['eslint', 'tslint', 'tsserver'],
-      \   'yaml': ['yamllint'],
+      \   'racket': ['raco'],
+      \   'haskell': ['ghc'],
+      \   'yaml': ['yamllint']
       \}
 
 let g:ale_fixers = {
-      \ 'javascript': ['eslint'],
+      \ 'javascript': ['eslint', 'prettier'],
       \ 'html': ['tidy'],
+      \ 'racket': ['raco'],
+      \ 'haskell': ['ghc']
       \ }
 
 let g:ale_javascript_tsserver_use_global = 1
-" let g:ale_javascript_eslint_use_global = 1
+let g:ale_javascript_eslint_use_global = 1
 
 let test#strategy = "neovim"
 
@@ -342,7 +341,5 @@ function! WinMove(key)
    exec "wincmd ".a:key
   endif
 endfunction
-
-au VimEnter * NERDTree
 
 autocmd BufReadPost * call vimlambdify#lambdify("Statement", "scmNiceLambda", "lambda")
