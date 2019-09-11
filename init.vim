@@ -9,12 +9,16 @@ set lazyredraw
 call plug#begin('~/.vim/plugged')
 
 Plug 'calebsmith/vim-lambdify'
+Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-sensible'
+Plug 'gberenfield/cljfold.vim'
 Plug 'ervandew/supertab'
 Plug 'ajh17/VimCompletesMe'
 Plug 'w0rp/ale'
 Plug 'flowtype/vim-flow'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'junegunn/fzf.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
@@ -184,6 +188,29 @@ map <leader>cr :GrammarousCheck --lang=ru --preview<CR>
 
 """ Plugin Settings
 
+" configure clojure folding
+let g:clojure_foldwords = "def,defn,defmacro,defmethod,defschema,defprotocol,defrecord"
+
+
+" clojure rainbow parens
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+      \  'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+      \  'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+      \  'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+      \  'separately': {
+      \      '*': 0,
+      \      'clojure': {},
+      \  }
+      \}
+
+" a few extra mappings for fireplace
+" evaluate top level form
+au BufEnter *.clj nnoremap <buffer> cpt :Eval<CR>
+" show last evaluation in temp file
+au BufEnter *.clj nnoremap <buffer> cpl :Last<CR>
+
+
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'none'
 let g:prettier#config#config_precedence = 'file-override'
@@ -227,31 +254,31 @@ let g:vim_markdown_folding_disabled = 1
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "---BEGIN Rainbow parentheses---
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
+" let g:rbpt_colorpairs = [
+"     \ ['brown',       'RoyalBlue3'],
+"     \ ['Darkblue',    'SeaGreen3'],
+"     \ ['darkgray',    'DarkOrchid3'],
+"     \ ['darkgreen',   'firebrick3'],
+"     \ ['darkcyan',    'RoyalBlue3'],
+"     \ ['darkred',     'SeaGreen3'],
+"     \ ['darkmagenta', 'DarkOrchid3'],
+"     \ ['brown',       'firebrick3'],
+"     \ ['gray',        'RoyalBlue3'],
+"     \ ['black',       'SeaGreen3'],
+"     \ ['darkmagenta', 'DarkOrchid3'],
+"     \ ['Darkblue',    'firebrick3'],
+"     \ ['darkgreen',   'RoyalBlue3'],
+"     \ ['darkcyan',    'SeaGreen3'],
+"     \ ['darkred',     'DarkOrchid3'],
+"     \ ['red',         'firebrick3'],
+"     \ ]
 
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" let g:rbpt_max = 16
+" let g:rbpt_loadcmd_toggle = 0
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
 "---END Rainbow parentheses---
 
 nnoremap ff :normal! gg=G``<CR>
