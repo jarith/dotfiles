@@ -8,13 +8,17 @@ set lazyredraw
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'calebsmith/vim-lambdify', { 'for': ['clojure', 'scheme', 'racket'] }
+Plug 'calebsmith/vim-lambdify'
+Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-sensible'
+Plug 'gberenfield/cljfold.vim'
 Plug 'ervandew/supertab'
 Plug 'ajh17/VimCompletesMe'
 Plug 'w0rp/ale'
 Plug 'flowtype/vim-flow'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'junegunn/fzf.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
@@ -159,14 +163,8 @@ nmap <silent> <leader>tn :TestNearest<CR>
 " nmap <silent> t<C-l> :TestLast<CR>
 " nmap <silent> t<C-g> :TestVisit<CR>
 
-nmap <silent> <leader>t :!npm run test<CR>
-nmap <silent> <F5> :!npm start<CR>
-nmap <silent> <leader>l :Prettier<CR>
 nmap <silent> <leader>s :w!<CR>
 nmap <silent> <leader>q :q!<CR>
-
-nmap <silent> <C-e>r :!racket %:t<CR>
-nmap <silent> <C-t>r :!raco test '%:t<CR>
 
 " Auto indent pasted text
 " nnoremap p p=`]<C-o>
@@ -190,12 +188,35 @@ map <leader>cr :GrammarousCheck --lang=ru --preview<CR>
 
 """ Plugin Settings
 
+" configure clojure folding
+let g:clojure_foldwords = "def,defn,defmacro,defmethod,defschema,defprotocol,defrecord"
+
+
+" clojure rainbow parens
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+      \  'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+      \  'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+      \  'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+      \  'separately': {
+      \      '*': 0,
+      \      'clojure': {},
+      \  }
+      \}
+
+" a few extra mappings for fireplace
+" evaluate top level form
+au BufEnter *.clj nnoremap <buffer> cpt :Eval<CR>
+" show last evaluation in temp file
+au BufEnter *.clj nnoremap <buffer> cpl :Last<CR>
+
+
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'none'
 let g:prettier#config#config_precedence = 'file-override'
 
 let g:LanguageClient_autoStart = 1
-set shell=/bin/bash
+set shell=/bin/zsh
 
 let g:LanguageClient_serverCommands = {
        \ 'javascript': ['javascript-typescript-stdio'],
@@ -206,20 +227,25 @@ let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_toc_autofit = 1
 let g:lexical#spelllang = ['en_us', 'ru_ru']
 let g:airline#extensions#ale#enabled = 1
+
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
       \   '*': ['remove_trailing_lines', 'trim_whitespace'],
       \   'javascript': ['eslint', 'tslint', 'tsserver'],
-      \   'yaml': ['yamllint'],
+      \   'racket': ['raco'],
+      \   'haskell': ['ghc'],
+      \   'yaml': ['yamllint']
       \}
 
 let g:ale_fixers = {
-      \ 'javascript': ['eslint'],
+      \ 'javascript': ['eslint', 'prettier'],
       \ 'html': ['tidy'],
+      \ 'racket': ['raco'],
+      \ 'haskell': ['ghc']
       \ }
 
 let g:ale_javascript_tsserver_use_global = 1
-" let g:ale_javascript_eslint_use_global = 1
+let g:ale_javascript_eslint_use_global = 1
 
 let test#strategy = "neovim"
 
@@ -228,37 +254,36 @@ let g:vim_markdown_folding_disabled = 1
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "---BEGIN Rainbow parentheses---
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
+" let g:rbpt_colorpairs = [
+"     \ ['brown',       'RoyalBlue3'],
+"     \ ['Darkblue',    'SeaGreen3'],
+"     \ ['darkgray',    'DarkOrchid3'],
+"     \ ['darkgreen',   'firebrick3'],
+"     \ ['darkcyan',    'RoyalBlue3'],
+"     \ ['darkred',     'SeaGreen3'],
+"     \ ['darkmagenta', 'DarkOrchid3'],
+"     \ ['brown',       'firebrick3'],
+"     \ ['gray',        'RoyalBlue3'],
+"     \ ['black',       'SeaGreen3'],
+"     \ ['darkmagenta', 'DarkOrchid3'],
+"     \ ['Darkblue',    'firebrick3'],
+"     \ ['darkgreen',   'RoyalBlue3'],
+"     \ ['darkcyan',    'SeaGreen3'],
+"     \ ['darkred',     'DarkOrchid3'],
+"     \ ['red',         'firebrick3'],
+"     \ ]
 
-let g:rbpt_max = 16
-let g:rbpt_loadcmd_toggle = 0
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" let g:rbpt_max = 16
+" let g:rbpt_loadcmd_toggle = 0
+" au VimEnter * RainbowParenthesesToggle
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
 "---END Rainbow parentheses---
 
 nnoremap ff :normal! gg=G``<CR>
 
 noremap <Leader>y "+y
-noremap <leader>p "+p
 
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
@@ -270,7 +295,6 @@ nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fa :Ag<CR>
 
 let NERDTreeIgnore = ['\.pyc$', '\.retry$']
-let NERDTreeShowHidden = 1
 
 " let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
@@ -345,6 +369,4 @@ function! WinMove(key)
   endif
 endfunction
 
-au VimEnter * NERDTree
-
-autocmd BufReadPost *.rkt call vimlambdify#lambdify("Statement", "scmNiceLambda", "lambda")
+autocmd BufReadPost * call vimlambdify#lambdify("Statement", "scmNiceLambda", "lambda")
