@@ -1,0 +1,141 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "shift shift": "file_finder::Toggle",
+      "cmd-p": "command_palette::Toggle",
+      "cmd-shift-k": null
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-shift-g": "editor::OpenPermalinkToLine",
+      "alt-cmd-o": null,
+      "ctrl-cmd-o": null,
+      "ctrl-cmd-shift-o": null,
+      "alt-cmd-b": null,
+      "ctrl-~": null,
+      "cmd-k s": null,
+      "cmd-shift-s": null,
+      "cmd-shift-n": null,
+      "ctrl-`": null,
+      "cmd-1": null,
+      "cmd-2": null,
+      "cmd-3": null,
+      "cmd-4": null,
+      "cmd-5": null,
+      "cmd-6": null,
+      "cmd-7": null,
+      "cmd-8": null,
+      "cmd-9": null,
+      "cmd-shift-r": ["pane::DeploySearch", { "replace_enabled": true }],
+      "cmd-k cmd-s": null,
+      "ctrl-g": null,
+      "gc": ["editor::ToggleComments", { "advance_downwards": false }]
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space t": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "g l": "vim::SelectNext",
+      "g L": "vim::SelectPrevious",
+      "g a": "editor::SelectAllMatches"
+    }
+  },
+  {
+    "context": "(Editor || (OutlinePanel && not_editing)) && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      "s v": "pane::SplitRight",
+      "s s": "pane::SplitDown",
+      "s l": "workspace::ActivatePaneRight",
+      "s h": "workspace::ActivatePaneLeft",
+      "s k": "workspace::ActivatePaneUp",
+      "s j": "workspace::ActivatePaneDown",
+      "space m": "tab_switcher::Toggle",
+      "ctrl-w l": "workspace::ToggleRightDock",
+      "ctrl-w h": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "OutlinePanel && not_editing",
+    "use_key_equivalents": true,
+    "bindings": {
+      "escape": "menu::Cancel",
+      "left": "outline_panel::CollapseSelectedEntry",
+      "right": "outline_panel::ExpandSelectedEntry",
+      "g c p": "workspace::CopyPath",
+      "g c r": "workspace::CopyRelativePath",
+      "alt-cmd-r": null,
+      "space": null
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "use_key_equivalents": true,
+    "bindings": {
+      "cmd-x": "project_panel::Cut",
+      "cmd-c": "project_panel::Copy",
+      "cmd-v": "project_panel::Paste",
+      "enter": "project_panel::Rename",
+      "cmd-backspace": ["project_panel::Delete", { "skip_prompt": true }],
+      "left": null,
+      "right": null,
+      "cmd-n": null,
+      "cmd-d": null,
+      "alt-cmd-n": null,
+      "f2": null,
+      "backspace": null,
+      "delete": null,
+      "cmd-delete": null,
+      "alt-cmd-r": null,
+      "ctrl-shift-enter": null,
+      "cmd-alt-backspace": null,
+      "cmd-alt-shift-f": null,
+      "shift-down": null,
+      "shift-up": null,
+      "escape": "menu::Cancel"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      ":": "command_palette::Toggle",
+      "%": "project_panel::NewFile",
+      "/": "project_panel::NewSearchInDirectory",
+      "d": "project_panel::NewDirectory",
+      "enter": "project_panel::OpenPermanent",
+      "escape": "project_panel::ToggleFocus",
+      "j": "menu::SelectNext",
+      "k": "menu::SelectPrevious",
+      "o": "project_panel::OpenPermanent",
+      "shift-d": "project_panel::Delete",
+      "shift-r": "project_panel::Rename",
+      "shift-g": "menu::SelectLast",
+      "g g": "menu::SelectFirst",
+      "g c": "workspace::CopyPath",
+      "g c r": "workspace::CopyRelativePath",
+      "-": "project_panel::SelectParent",
+      "h": null,
+      "l": null,
+      "t": null,
+      "v": null,
+      "p": null,
+      "x": null,
+      "s": null
+    }
+  }
+]
