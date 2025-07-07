@@ -7,7 +7,27 @@
     },
     "version": "2"
   },
-  "icon_theme": "Catppuccin Frappé",
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/.yarn",
+    "**/.idea",
+    "**/.nx",
+    "**/.swc",
+    "**/.husky",
+    "**/.storybook",
+    "**/.storybook-canvas",
+    "**/.storybook-deployment",
+    "**/node_modules"
+  ],
+  "icon_theme": "Colored Zed Icons Theme Light",
   "base_keymap": "JetBrains",
   "telemetry": {
     "metrics": false,
@@ -94,9 +114,7 @@
   "lsp": {
     "vtsls": {
       "settings": {
-        // For TypeScript:
         "typescript": { "tsserver": { "maxTsServerMemory": 16184 } },
-        // For JavaScript:
         "javascript": { "tsserver": { "maxTsServerMemory": 16184 } }
       }
     }

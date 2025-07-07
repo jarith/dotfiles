@@ -1,10 +1,3 @@
-// Zed keymap
-//
-// For information on binding keys, see the Zed
-// documentation: https://zed.dev/docs/key-bindings
-//
-// To see the default key bindings run `zed: open default keymap`
-// from the command palette.
 [
   {
     "context": "Workspace",
@@ -92,6 +85,7 @@
       "cmd-v": "project_panel::Paste",
       "enter": "project_panel::Rename",
       "cmd-backspace": ["project_panel::Delete", { "skip_prompt": true }],
+      "s l": "workspace::ActivatePaneRight",
       "left": null,
       "right": null,
       "cmd-n": null,
@@ -117,12 +111,12 @@
       "%": "project_panel::NewFile",
       "/": "project_panel::NewSearchInDirectory",
       "d": "project_panel::NewDirectory",
+      "shift-d": ["project_panel::Delete", { "skip_prompt": true }],
       "enter": "project_panel::OpenPermanent",
       "escape": "project_panel::ToggleFocus",
       "j": "menu::SelectNext",
       "k": "menu::SelectPrevious",
       "o": "project_panel::OpenPermanent",
-      "shift-d": "project_panel::Delete",
       "shift-r": "project_panel::Rename",
       "shift-g": "menu::SelectLast",
       "g g": "menu::SelectFirst",
