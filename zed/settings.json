@@ -86,7 +86,7 @@
       }
     },
     "TypeScript": {
-      "language_servers": ["!typescript-language-server", "vtsls", "..."],
+      "language_servers": ["tsgo", "vtsls"],
       "prettier": {
         "allowed": true
       }
