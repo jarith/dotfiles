@@ -1,12 +1,4 @@
 {
-  "agent": {
-    "model_parameters": [],
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-7-sonnet"
-    },
-    "version": "2"
-  },
   "autosave": "on_focus_change",
   "file_scan_exclusions": [
     "**/.git",
@@ -45,8 +37,7 @@
     "dark": "Forest Night"
   },
   "features": {
-    "edit_prediction_provider": "supermaven",
-    "copilot": false
+    "edit_prediction_provider": "supermaven"
   },
   "toolbar": {
     // "quick_actions": false
@@ -75,19 +66,19 @@
   },
   "languages": {
     "JavaScript": {
-      "language_servers": ["!typescript-language-server", "vtsls", "..."],
+      "language_servers": ["!typescript-language-server", "vtsls"],
       "prettier": {
         "allowed": true
       }
     },
     "TSX": {
-      "language_servers": ["!typescript-language-server", "vtsls", "..."],
+      "language_servers": ["!typescript-language-server", "vtsls"],
       "prettier": {
         "allowed": true
       }
     },
     "TypeScript": {
-      "language_servers": ["tsgo", "vtsls"],
+      "language_servers": ["!typescript-language-server", "vtsls"],
       "prettier": {
         "allowed": true
       }

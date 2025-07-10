@@ -1,26 +1,131 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette
 {
-  "icon_theme": "Catppuccin Frappé",
+  "agent": {
+    "version": "2",
+    "model_parameters": [],
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet"
+    }
+  },
+  "autosave": "on_focus_change",
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/.yarn",
+    "**/.idea",
+    "**/.nx",
+    "**/.swc",
+    "**/.husky",
+    "**/.storybook",
+    "**/.storybook-canvas",
+    "**/.storybook-deployment",
+    "**/node_modules"
+  ],
+  "icon_theme": "Colored Zed Icons Theme Light",
   "base_keymap": "JetBrains",
   "telemetry": {
-    "metrics": false
+    "metrics": false,
+    "diagnostics": false
   },
   "vim_mode": true,
   "ui_font_size": 16,
   "buffer_font_size": 16,
+  "ui_font_family": "IosevkaTerm Nerd Font",
+  "buffer_font_family": "IosevkaTerm Nerd Font",
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Everforest Dark"
+    "dark": "Forest Night"
   },
   "features": {
-    "inline_completion_provider": "supermaven"
+    "edit_prediction_provider": "supermaven",
+    "copilot": false
+  },
+  "toolbar": {
+    // "quick_actions": false
+  },
+  "tab_bar": {
+    "show": true
+  },
+  "scrollbar": {
+    "show": "never"
+  },
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+  "preview_tabs": {
+    "enabled": false
+  },
+  "hide_mouse": "on_typing_and_movement",
+  "cursor_blink": false,
+  "relative_line_numbers": true,
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true
+    }
+  },
+  "languages": {
+    "JavaScript": {
+      "language_servers": ["!typescript-language-server", "vtsls", "..."],
+      "prettier": {
+        "allowed": true
+      }
+    },
+    "TSX": {
+      "language_servers": ["!typescript-language-server", "vtsls", "..."],
+      "prettier": {
+        "allowed": true
+      }
+    },
+    "TypeScript": {
+      "language_servers": ["!typescript-language-server", "tsgo", "vtsls"],
+      "prettier": {
+        "allowed": true
+      }
+    },
+    "Diff": {
+      "show_edit_predictions": false,
+      "remove_trailing_whitespace_on_save": false,
+      "ensure_final_newline_on_save": false
+    },
+    "Git Commit": {
+      "allow_rewrap": "anywhere",
+      "soft_wrap": "editor_width",
+      "preferred_line_length": 72
+    },
+    "Markdown": {
+      "format_on_save": "on",
+      "use_on_type_format": false,
+      "allow_rewrap": "anywhere",
+      "soft_wrap": "editor_width",
+      "prettier": {
+        "allowed": true
+      }
+    }
+  },
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": { "tsserver": { "maxTsServerMemory": 16184 } },
+        "javascript": { "tsserver": { "maxTsServerMemory": 16184 } }
+      }
+    }
+  },
+  "title_bar": {
+    "show_branch_icon": true,
+    "show_branch_name": true,
+    "show_project_items": true,
+    "show_onboarding_banner": false,
+    "show_user_picture": false,
+    "show_sign_in": false
   }
 }
