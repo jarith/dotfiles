@@ -4,7 +4,9 @@
     "bindings": {
       "shift shift": "file_finder::Toggle",
       "cmd-p": "command_palette::Toggle",
-      "cmd-shift-k": null
+      "cmd-shift-k": null,
+      "ctrl-~": null,
+      "ctrl-`": null
     }
   },
   {

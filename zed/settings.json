@@ -104,10 +104,27 @@
     }
   },
   "lsp": {
+    "typescript-language-server": {
+      "settings": {
+        "typescript": {
+          "tsserver": {
+            "maxTsServerMemory": 16184
+          }
+        }
+      }
+    },
     "vtsls": {
       "settings": {
-        "typescript": { "tsserver": { "maxTsServerMemory": 16184 } },
-        "javascript": { "tsserver": { "maxTsServerMemory": 16184 } }
+        "typescript": {
+          "tsserver": {
+            "maxTsServerMemory": 16184
+          }
+        },
+        "javascript": {
+          "tsserver": {
+            "maxTsServerMemory": 16184
+          }
+        }
       }
     }
   },
