@@ -18,7 +18,8 @@
     "**/.storybook",
     "**/.storybook-canvas",
     "**/.storybook-deployment",
-    "**/node_modules"
+    "**/node_modules",
+    "**/*.test.ts"
   ],
   "icon_theme": "Colored Zed Icons Theme Light",
   "base_keymap": "JetBrains",
@@ -128,6 +129,7 @@
       }
     }
   },
+  "lsp_document_colors": "background",
   "title_bar": {
     "show_branch_icon": true,
     "show_branch_name": true,
