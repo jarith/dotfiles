@@ -84,6 +84,15 @@
         "allowed": true
       }
     },
+    "Python": {
+      "language_servers": ["pyright", "ruff"],
+      "format_on_save": "on",
+      "formatter": {
+        "language_server": {
+          "name": "ruff"
+        }
+      }
+    },
     "Diff": {
       "show_edit_predictions": false,
       "remove_trailing_whitespace_on_save": false,
