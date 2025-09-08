@@ -1,4 +1,11 @@
 {
+  "agent": {
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-7-sonnet"
+    }
+  },
   "autosave": "on_focus_change",
   "file_scan_exclusions": [
     "**/.git",
