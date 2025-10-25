@@ -118,6 +118,20 @@
     }
   },
   "lsp": {
+    "vscode-css-language-server": {
+      "settings": {
+        "css": {
+          "lint": { "unknownAtRules": "ignore" }
+        }
+      }
+    },
+    "stylelint-lsp": {
+      "settings": {
+        "stylelintplus": {
+          "autoFixOnSave": true
+        }
+      }
+    },
     "typescript-language-server": {
       "settings": {
         "typescript": {
