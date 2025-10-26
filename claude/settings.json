@@ -14,7 +14,9 @@
 			"Bash(uniq:*)",
 			"Bash(sort:*)",
 			"Bash(awk:*)",
-			"Bash(pwd:*)"
+			"Bash(pwd:*)",
+			"Bash(mv:*)",
+			"Bash(cp:*)"
 		],
 		"deny": [
 			"Read(.env)",
@@ -23,15 +25,8 @@
 			"Read(.zshrc)",
 			"Read(.zshenv)",
 			"Read(.bashrc)",
-			"Read(.profile)"
-		],
-		"ask": [
-			"Bash(mv:*)",
-			"Bash(cp:*)",
-			"Bash(node:*)",
-			"Bash(xargs:*)",
-			"Bash(git:*)",
-			"Bash(curl:*)"
+			"Read(.profile)",
+			"Bash(git:*)"
 		]
 	},
   "statusLine": {
