@@ -14,7 +14,9 @@
       "Bash(uniq:*)",
       "Bash(sort:*)",
       "Bash(awk:*)",
-      "Bash(pwd:*)"
+      "Bash(pwd:*)",
+      "Bash(mv:*)",
+      "Bash(cp:*)"
     ],
     "deny": [
       "Read(.env)",
