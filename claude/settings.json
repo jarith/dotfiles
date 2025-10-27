@@ -1,51 +1,57 @@
 {
-	"permissions": {
-		"allow": [
-			"Bash(fd:*)",
-			"Bash(rg:*)",
-			"Bash(find:*)",
-			"Bash(grep:*)",
-			"Bash(yarn:*)",
-			"Bash(mkdir:*)",
-			"Bash(echo:*)",
-			"Bash(tail:*)",
-			"Bash(head:*)",
-			"Bash(cd:*)",
-			"Bash(uniq:*)",
-			"Bash(sort:*)",
-			"Bash(awk:*)",
-			"Bash(pwd:*)",
-			"Bash(mv:*)",
-			"Bash(cp:*)"
-		],
-		"deny": [
-			"Read(.env)",
-			"Read(.envrc)",
-			"Read(.env.*)",
-			"Read(.zshrc)",
-			"Read(.zshenv)",
-			"Read(.bashrc)",
-			"Read(.profile)",
-			"Bash(git:*)"
-		]
-	},
+  "permissions": {
+    "allow": [
+      "Bash(fd:*)",
+      "Bash(rg:*)",
+      "Bash(find:*)",
+      "Bash(grep:*)",
+      "Bash(yarn:*)",
+      "Bash(mkdir:*)",
+      "Bash(echo:*)",
+      "Bash(tail:*)",
+      "Bash(head:*)",
+      "Bash(cd:*)",
+      "Bash(uniq:*)",
+      "Bash(sort:*)",
+      "Bash(awk:*)",
+      "Bash(pwd:*)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Read(.envrc)",
+      "Read(.env.*)",
+      "Read(.zshrc)",
+      "Read(.zshenv)",
+      "Read(.bashrc)",
+      "Read(.profile)"
+    ],
+    "ask": [
+      "Bash(mv:*)",
+      "Bash(cp:*)",
+      "Bash(node:*)",
+      "Bash(xargs:*)",
+      "Bash(git:*)",
+      "Bash(curl:*)"
+    ]
+  },
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.message' | xargs -I {} hs -c 'hs.notify.new({title=\"Claude\", informativeText=\"{}\"}):send()'"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "ccusage statusline",
     "padding": 0
   },
-	"hooks": {
-		"Notification": [
-			{
-				"matcher": "",
-				"hooks": [
-					{
-						"type": "command",
-						"command": "jq -r '.message' | xargs -I {} hs -c 'hs.notify.new({title=\"Claude\", informativeText=\"{}\"}):send()'"
-					}
-				]
-			}
-		]
-	},
-	"alwaysThinkingEnabled": false
+  "alwaysThinkingEnabled": true,
+  "model": "opus"
 }
