@@ -30,12 +30,11 @@
     "ask": [
       "Bash(mv:*)",
       "Bash(cp:*)",
-      "Bash(node:*)",
       "Bash(xargs:*)",
-      "Bash(git:*)",
       "Bash(curl:*)"
     ]
   },
+  "model": "sonnet[1m]",
   "hooks": {
     "Notification": [
       {
@@ -54,6 +53,5 @@
     "command": "ccusage statusline",
     "padding": 0
   },
-  "alwaysThinkingEnabled": true,
-  "model": "opus"
+  "alwaysThinkingEnabled": true
 }
