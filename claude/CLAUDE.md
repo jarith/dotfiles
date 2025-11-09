@@ -53,6 +53,14 @@ FOR EVERY NEW FEATURE OR BUGFIX, YOU MUST follow TDD:
 - You MUST use your TodoWrite tool to keep track of what you're doing
 - You MUST NEVER discard tasks from your TodoWrite todo list without my explicit approval
 
+## Code Navigation and Exploration
+
+- YOU MUST ALWAYS use the Serena MCP server tools for code navigation, exploration, and symbol-based operations
+- YOU MUST prioritize Serena's symbolic tools (find_symbol, get_symbols_overview, find_referencing_symbols, etc.) over reading entire files
+- YOU MUST use Serena's editing tools (replace_symbol_body, insert_after_symbol, etc.) when working with code symbols
+- NEVER read entire files when symbolic tools can give you the information you need
+- ONLY read full files as a last resort after exhausting symbolic and pattern-based approaches
+
 ## Systematic Debugging Process
 
 - YOU MUST ALWAYS find the root cause of any issue you are debugging YOU MUST NEVER fix a symptom or add a workaround instead of finding a root cause, even if it is faster or I seem like I'm in a hurry.
