@@ -1,0 +1,18 @@
+{
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+    "workbench.colorTheme": "Everforest Dark",
+    // Editor
+    "editor.fontFamily": "IosevkaTerm Nerd Font Mono",
+    "editor.fontSize": 16,
+    "editor.formatOnSave": true,
+    "editor.fontLigatures": true,
+    "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": false,
+    "editor.cursorBlinking": "solid",
+    "editor.tabSize": 4,
+    "editor.detectIndentation": true,
+    "editor.smoothScrolling": true,
+    "editor.scrollBeyondLastLine": false,
+    // Telemetry
+    "telemetry.telemetryLevel": "off",
+}

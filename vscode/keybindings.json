@@ -1,0 +1,37 @@
+[
+    // File / command palette / quick open
+    {
+        "key": "shift shift",
+        "command": "workbench.action.quickOpen"
+    },
+    {
+        "key": "cmd+p",
+        "command": "workbench.action.quickOpen"
+    },
+    // Sidebar focus
+    {
+        "key": "s h",
+        "command": "workbench.action.focusSideBar",
+        "when": "editorTextFocus && vim.mode == 'Normal'"
+    },
+    {
+        "key": "s l",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "(sideBarFocus && !inputFocus) && vim.mode == 'Normal'"
+    },
+    {
+        "key": "n",
+        "command": "explorer.newFile",
+        "when": "sideBarFocus && !inputFocus"
+    },
+    {
+        "key": "d",
+        "command": "explorer.newFolder",
+        "when": "sideBarFocus && !inputFocus"
+    },
+    {
+        "key": "ctrl+d",
+        "command": "deleteFile",
+        "when": "sideBarFocus && !inputFocus"
+    },
+]
