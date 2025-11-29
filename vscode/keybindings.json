@@ -34,4 +34,20 @@
         "command": "deleteFile",
         "when": "sideBarFocus && !inputFocus"
     },
+    {
+        "key": "cmd+[",
+        "command": "calva.evaluateCurrentTopLevelForm",
+        "when": "editorTextFocus && editorLangId == 'clojure'"
+    },
+    // Default removals
+    {
+        "key": "cmd+[",
+        "command": "-editor.action.outdentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+]",
+        "command": "-editor.action.indentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
 ]
