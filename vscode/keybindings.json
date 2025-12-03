@@ -39,6 +39,11 @@
         "command": "calva.evaluateCurrentTopLevelForm",
         "when": "editorTextFocus && editorLangId == 'clojure'"
     },
+    {
+        "key": "cmd+l",
+        "command": "calva.loadFile",
+        "when": "editorTextFocus && editorLangId == 'clojure'"
+    },
     // Default removals
     {
         "key": "cmd+[",
