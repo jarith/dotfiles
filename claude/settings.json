@@ -36,6 +36,7 @@
       "Bash(curl:*)"
     ]
   },
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -54,6 +55,5 @@
     "command": "ccusage statusline",
     "padding": 0
   },
-  "alwaysThinkingEnabled": true,
-  "model": "opus"
+  "alwaysThinkingEnabled": true
 }

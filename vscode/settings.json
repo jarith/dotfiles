@@ -13,6 +13,11 @@
     "editor.detectIndentation": true,
     "editor.smoothScrolling": true,
     "editor.scrollBeyondLastLine": false,
+    // Brackets
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairsHorizontal": "active",
+    "editor.guides.bracketPairs": "active",
+    "editor.matchBrackets": "never",
     // Telemetry
     "telemetry.telemetryLevel": "off",
     "explorer.confirmDragAndDrop": false,
@@ -70,5 +75,11 @@
     // To improve performance
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1
-    }
+    },
+    "files.exclude": {
+        "**/*.d.ts": true,
+        "**/*.d.ts.map": true
+    },
+    "extensions.ignoreRecommendations": true,
+    "settingsSync.keybindingsPerPlatform": false
 }
