@@ -1,6 +1,5 @@
 {
     "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
-    "workbench.colorTheme": "Everforest Dark",
     // Editor
     "editor.fontFamily": "IosevkaTerm Nerd Font Mono",
     "editor.fontSize": 16,
@@ -13,6 +12,13 @@
     "editor.detectIndentation": true,
     "editor.smoothScrolling": true,
     "editor.scrollBeyondLastLine": false,
+    "typescript.format.enable": true,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "always",
+        "source.addMissingImports.ts": "always",
+        "source.fixAll.ts": "always"
+    },
     // Brackets
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairsHorizontal": "active",
@@ -72,6 +78,8 @@
         "<C-a>": false,
         "<C-f>": false
     },
+    // Git
+    "git.mergeEditor": true,
     // To improve performance
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1
@@ -81,5 +89,7 @@
         "**/*.d.ts.map": true
     },
     "extensions.ignoreRecommendations": true,
-    "settingsSync.keybindingsPerPlatform": false
+    "settingsSync.keybindingsPerPlatform": false,
+    "git.blame.editorDecoration.enabled": true,
+    "workbench.colorTheme": "Everforest Dark"
 }

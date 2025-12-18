@@ -80,6 +80,11 @@
         "key": "cmd+]",
         "command": "workbench.action.navigateForward"
     },
+    // Git
+    {
+        "key": "cmd+b",
+        "command": "git.rebase"
+    }
     // Default removals
     {
         "key": "cmd+e",
