@@ -17,7 +17,6 @@
       "Bash(pwd:*)",
       "Bash(mv:*)",
       "Bash(cp:*)",
-      "mcp__serena__*",
       "mcp__context7__*"
     ],
     "deny": [
@@ -36,7 +35,6 @@
       "Bash(curl:*)"
     ]
   },
-  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -55,5 +53,6 @@
     "command": "ccusage statusline",
     "padding": 0
   },
-  "alwaysThinkingEnabled": true
+  "alwaysThinkingEnabled": true,
+  "model": "opus"
 }
